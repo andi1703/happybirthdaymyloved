@@ -43,7 +43,9 @@ Want to make this birthday website for **your own friend**? 🎉 Just follow the
 1. **Fork this repository** 🍴  
 2. Open the `index.html` file and **replace the name** with your friend’s name.  
 3. Go to the **`img` folder** and replace the images with your own (photos, cake images, decorations, etc). 
-4. Deploy the site on *Vercel* or *Github pages* ( or any platform that you like).
+4. Add your music file as `music.mp3` in the project root. The page will try to play it when opened and shows a play button when the browser blocks autoplay.
+5. Deploy the site on *Vercel* or *Github pages* ( or any platform that you like).
+6. Share the link with your friend as a surprise gift 🎀  
 5. Share the link with your friend as a surprise gift 🎀  
 
 ---

@@ -1,6 +1,44 @@
 const $ = (s) => document.querySelector(s);
 
 (function () {
+  const music = $("#bgMusic"),
+    toggle = $("#musicToggle"),
+    label = toggle.querySelector("span");
+
+  music.volume = 0.65;
+
+  function updateButton(playing) {
+    toggle.classList.toggle("playing", playing);
+    toggle.setAttribute("aria-label", playing ? "Pause music" : "Play music");
+    label.textContent = playing ? "Pause music" : "Play music";
+  }
+
+  function startMusic() {
+    music
+      .play()
+      .then(() => updateButton(true))
+      .catch(() => updateButton(false));
+  }
+
+  toggle.addEventListener("click", () => {
+    if (music.paused) startMusic();
+    else {
+      music.pause();
+      updateButton(false);
+    }
+  });
+
+  music.addEventListener("error", () => {
+    toggle.disabled = true;
+    label.textContent = "Add music.mp3";
+  });
+
+  startMusic();
+  addEventListener("pointerdown", startMusic, { once: true, passive: true });
+  addEventListener("keydown", startMusic, { once: true });
+})();
+
+(function () {
   const el = $("#typewriter"),
     text = "Barakallahu Fii Umrik",
     sleep = (ms) => new Promise((r) => setTimeout(r, ms));
