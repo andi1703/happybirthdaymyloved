@@ -20,6 +20,8 @@ const $ = (s) => document.querySelector(s);
       .catch(() => updateButton(false));
   }
 
+  window.startBackgroundMusic = startMusic;
+
   toggle.addEventListener("click", () => {
     if (music.paused) startMusic();
     else {
@@ -34,8 +36,6 @@ const $ = (s) => document.querySelector(s);
   });
 
   startMusic();
-  addEventListener("pointerdown", startMusic, { once: true, passive: true });
-  addEventListener("keydown", startMusic, { once: true });
 })();
 
 (function () {
@@ -208,6 +208,7 @@ const $ = (s) => document.querySelector(s);
     ];
   let k = 0;
   $("#wishBtn").addEventListener("click", () => {
+      window.startBackgroundMusic?.();
     msg.textContent = lines[k++ % lines.length];
     msg.classList.remove("pop");
     void msg.offsetWidth;
